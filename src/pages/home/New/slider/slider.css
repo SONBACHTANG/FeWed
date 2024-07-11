@@ -1,0 +1,14 @@
+
+.carousel-caption {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+.slider-button {
+  margin-top: 10px;
+}
+.carousel-indicators{
+  display: none;
+}

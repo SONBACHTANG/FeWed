@@ -1,0 +1,35 @@
+.trends-img{
+    background-color: #f7f7f7;
+    display: flex !important;
+    border-radius: 50%;
+    height: 130px;
+    width: 130px !important;
+    align-items: center;
+}
+.slick-slide {
+    padding: 10px;
+}
+
+#Search-trends img {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: 0 auto;
+}
+@media (max-width: 780px) {
+
+
+}
+#Search-trends .slick-slider .slick-list{
+    height: 150px !important;
+    padding-left: 75px;
+}
+#Search-trends .slick-slide{
+    width: 200px !important;
+}
+/*#Search-trends .slick-slide{*/
+/*    width: 318px !important;*/
+/*}*/
+/*#Search-trends .slick-track{*/
+/*    transform: translate3d(-1152px, 0px, 0px) !important;*/
+/*}*/

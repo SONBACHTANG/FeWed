@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Outfit, sans-serif;
+}
+
+.product-detail {
+  margin-top: 200px;
+  padding: 20px;
+}
+
+.product-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.thumbnail-images {
+  display: flex;
+  gap: 10px;
+}
+
+.thumbnail-images img {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+}
+
+.product-info {
+  padding: 20px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1.5em;
+  color: #333;
+  margin: 10px 0;
+}
+
+.description {
+  margin: 20px 0;
+}
+
+.details p {
+  margin: 5px 0;
+}
+
+.options {
+  margin: 20px 0;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.buy-now {
+  background-color: #f39c12;
+  border: none;
+  color: white;
+}
+
+.add-to-cart {
+  background-color: #2980b9;
+  border: none;
+  color: white;
+}
+
+.save {
+  background-color: #95a5a6;
+  border: none;
+  color: white;
+}

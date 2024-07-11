@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  font-family: Outfit, sans-serif;
+}
+
+.category {
+  text-align: center;
+  margin: 20px 100px;
+}
+
+.category-banner {
+  width: 100%;
+  height: auto;
+  /* margin-bottom: 20px; */
+}
+
+.category-title {
+  font-size: 1.65em;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.category-products {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card-button {
+  margin: 0 15px;
+}
+
+.category-button {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* CSS zoom img in card */
+.card img {
+  transition: transform 0.3s ease; /* add transition */
+}
+
+.card img:hover {
+  transform: scale(1.15); /* Increase img size */
+}
+
+/* category.css */
+.category {
+  margin-bottom: 2rem;
+}
+
+.category-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.category-products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.category-button {
+  display: block;
+  text-align: center;
+  margin: 1rem auto;
+}
+
+.image-container {
+  width: 100%;
+  height: 200px; /* Set a fixed height */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+}
+
+.category {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.category-products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.category-products .card {
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+.category-button {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.image-container {
+  height: 200px; /* Adjust height as needed */
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure images maintain aspect ratio */
+}
+
+.card-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .category-products .card {
+    width: 100%;
+  }
+}
