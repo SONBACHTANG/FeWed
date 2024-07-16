@@ -22,14 +22,6 @@ const getProductbyCategory = (data, pageIndex, pageSize) => {
     )
 }
 
-const getProductbyName = (data, pageIndex, pageSize) => {
-    return axios.get(`api/Product/FindAll?name=${data}&account_name=admin&page=${pageIndex}&pageSize=${pageSize}`)
-}
-
-const getProductbyCat = (data, pageIndex, pageSize) => {
-    return axios.get(`api/Product/FindAll?account_name=admin&type=${data}&page=${pageIndex}&pageSize=${pageSize}`)
-}
-
 const createProduct = (data) => {
     return axios.post(`api/Product/AddProduct`,
         JSON.stringify(data),
@@ -50,7 +42,5 @@ export {
     deleteProduct,
     createProduct,
     editProduct,
-    getProductbyCategory,
-    getProductbyName,
-    getProductbyCat
+    getProductbyCategory
 }

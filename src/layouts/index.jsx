@@ -11,6 +11,7 @@ import NotFoundPage from '../pages/404Page/404Page';
 function AppLayout() {
   const location = useLocation();
   const isAdminRoute = location.pathname.toLowerCase().includes('system');
+  const isLoggined = useSelector(state => state.auth.isLoggedIn); 
   const currentUser = useSelector(state => state.auth.currentUser);
   const [user, setLoginUser] = useState(currentUser);
 
@@ -21,17 +22,25 @@ function AppLayout() {
   return (
     <Routes>
       {isAdminRoute ? (
-        (
-          <Route element={<AdminLayout location={location} />}>
-            {Object.values(privateRoutes).map(({ path, component: Component, requiredLogin }) => (
-              <Route
-                key={path}
-                path={path}
-                element={requiredLogin ? (user && user.role_Name === "Admin" ? <Component /> : <Navigate to="404" />) : <Navigate to="/login" />}
-              />
-            ))}
-          </Route>
-        )
+        <Route element={<AdminLayout location={location} />}>
+          {Object.values(privateRoutes).map(({ path, component: Component, requiredLogin }) => (
+            <Route
+              key={path}
+              path={path}
+              element={
+                requiredLogin ? (
+                  isLoggined && user && user.role_Name === "Admin" ? (
+                    <Component />
+                  ) : (
+                    <Navigate to="/login" />
+                  )
+                ) : (
+                  <Component />
+                )
+              }
+            />
+          ))}
+        </Route>
       ) : (
         <>
           <Route element={<PublicLayout />}>
@@ -45,7 +54,17 @@ function AppLayout() {
               <Route
                 key={path}
                 path={path}
-                element={requiredLogin ? <Component /> : <Navigate to="/login" />}
+                element={
+                  requiredLogin ? (
+                    isLoggined ? (
+                      <Component />
+                    ) : (
+                      <Navigate to="/login" />
+                    )
+                  ) : (
+                    <Component />
+                  )
+                }
               />
             ))}
           </Route>

@@ -11,46 +11,53 @@ import Dashboard from '../Auth/pages/Dashboard';
 import Customers from '../Auth/pages/Customers';
 import Products from '../Auth/pages/Products';
 import ProductDetail from '../pages/product/New/productDetail/productDetail';
+import Shipping from '../Auth/pages/Shipping';
+import AddToCartButton from '../components/addToCart/addToCart';
 
 const privateRoutes = {
     home: {
         path: '/',
         component: Home,
-        requiredLogin: true,
+
     },
     shop: {
-        path: '/shop',
+        path: '/shop/:name?',
         component: Shop,
-        requiredLogin: true,
+
     },
     product: {
         path: '/product',
         component: Product,
-        requiredLogin: true,
+
     },
     productDetail: {
         path: '/Product/:id',
         component: ProductDetail,
-        requiredLogin: true,
+
     },
     about: {
         path: '/about',
         component: About,
-        requiredLogin: true,
+
     },
     contact: {
         path: '/contact',
         component: Contact,
-        requiredLogin: true,
+
     },
     blog: {
         path: '/blog',
         component: Blog,
-        requiredLogin: true,
+
     },
     cart: {
         path: '/cart',
         component: Cart,
+        requiredLogin: true,
+    },
+    addtoCart: {
+        path: '/addToCart',
+        component: AddToCartButton,
         requiredLogin: true,
     },
     checkout: {
@@ -79,6 +86,12 @@ const privateRoutes = {
     products: {
         path: '/system/products',
         component: Products,
+        requiredLogin: true,
+        role: "Admin"
+    },
+    shipping: {
+        path: '/system/shipping',
+        component: Shipping,
         requiredLogin: true,
         role: "Admin"
     },

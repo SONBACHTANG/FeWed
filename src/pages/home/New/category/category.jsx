@@ -5,11 +5,13 @@ import { Card, Button } from 'react-bootstrap';
 import './category.css';
 import { getProductbyCategory } from '../../../../Auth/Services/ProductService';
 import Loader from "../../../../components/loader/Loader"
+import { useNavigate } from 'react-router-dom';
+
 
 const Category = ({ categoryId, categoryName }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -34,6 +36,10 @@ const Category = ({ categoryId, categoryName }) => {
     return shuffled.slice(0, 4);
   };
 
+
+  const handleProductClick = (id) => {
+    navigate(`/Product/${id}`);
+  };
   const randomProducts = getRandomProducts(products);
 
   if (loading) {
@@ -51,7 +57,7 @@ const Category = ({ categoryId, categoryName }) => {
         {randomProducts.map(product => (
           <Card key={product.id} style={{ width: '18rem', margin: '10px' }}>
             <div className="image-container">
-              <Card.Img variant="top" src={product.image} alt={product.name} />
+              <Card.Img variant="top" src={product.image[0]} alt={product.name} />
             </div>
             <Card.Body>
               <Card.Title>{product.title}</Card.Title>
@@ -59,7 +65,7 @@ const Category = ({ categoryId, categoryName }) => {
                 {product.price}
               </Card.Text>
               <Button as={Link} to='/cart' className="card-button">Buy now</Button>
-              <Button as={Link} to={`/product/${product.id}`} className="card-button">View more</Button>
+              <Button onClick={() => handleProductClick(product.id)} className="card-button">View more</Button>
             </Card.Body>
           </Card>
         ))}

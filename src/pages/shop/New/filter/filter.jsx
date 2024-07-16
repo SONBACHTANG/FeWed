@@ -1,27 +1,48 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import './filter.css';
+import { getAllCategories } from "../../../../Auth/Services/CategoryService";
 
-function Filter() {
-  const [selectedBrand, setSelectedBrand] = useState('');
+function Filter({ handleFilter }) {
+  const [selectedCat, setSelectedCat] = useState('');
   const [selectedPrice, setSelectedPrice] = useState('');
   const [selectedMaterials, setSelectedMaterials] = useState('');
   const [selectedCollection, setSelectedCollection] = useState('');
+  const [categories, setCategories] = useState([]);
+  const [pageSize, setPageSize] = useState(1000);
+  const [pageCount, setPageCount] = useState(1);
+
+  useEffect(() => {
+    fetchCategories();
+  }, [pageCount, pageSize]);
+
+  const fetchCategories = async () => {
+    try {
+      const response = await getAllCategories(pageCount, pageSize);
+      if (response && response.errorCode === 200) {
+        setCategories(response.content.data);
+      }
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
+  };
 
   const handleApply = () => {
-    console.log('Filters applied:', {
-      brand: selectedBrand,
+    const filters = {
+      cat: selectedCat,
       price: selectedPrice,
       materials: selectedMaterials,
       collection: selectedCollection,
-    });
+    };
+    handleFilter(filters);
   };
 
   const handleClear = () => {
-    setSelectedBrand('');
-    setSelectedPrice('');
+    setSelectedCat('');
+    setSelectedPrice(0);
     setSelectedMaterials('');
     setSelectedCollection('');
+    handleFilter({});
   };
 
   return (
@@ -29,13 +50,15 @@ function Filter() {
       <Form.Group controlId="formBrand">
         <Form.Select
           aria-label="Select brand"
-          value={selectedBrand}
-          onChange={(e) => setSelectedBrand(e.target.value)}
+          value={selectedCat}
+          onChange={(e) => setSelectedCat(e.target.value)}
         >
           <option value="">Select brand</option>
-          <option value="brand1">Brand 1</option>
-          <option value="brand2">Brand 2</option>
-          <option value="brand3">Brand 3</option>
+          {
+            categories.map((category) => (
+              <option key={category.id} value={category.id}>{category.name}</option>
+            ))
+          }
         </Form.Select>
       </Form.Group>
 
@@ -46,9 +69,9 @@ function Filter() {
           onChange={(e) => setSelectedPrice(e.target.value)}
         >
           <option value="">Select price range</option>
-          <option value="low">Under $100</option>
-          <option value="mid">$100 - $500</option>
-          <option value="high">Over $500</option>
+          <option value="1">Under $100</option>
+          <option value="2">$100 - $500</option>
+          <option value="3">Over $500</option>
         </Form.Select>
       </Form.Group>
 
