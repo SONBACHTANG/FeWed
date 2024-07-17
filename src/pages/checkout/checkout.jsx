@@ -112,8 +112,8 @@ const Checkout = () => {
                     paymentRefId: 1,
                     paymentAmount: totalAmount,
                     paymentLanguage: "vn",
-                    merchantId: 2,
-                    paymentDestinationId: nganhang === "zalopay" ? 8 : 5,
+                    merchantId: 3,
+                    paymentDestinationId: nganhang === "zalopay" ? 2 : 1,
                     signature: "qwerty"
                 };
 
@@ -145,7 +145,7 @@ const Checkout = () => {
 
     return (
         <Container className='checkout-form'>
-            <h2>Checkout</h2>
+            <h2>Ordering Information</h2>
             <Form>
                 <Row>
                     <Col md={8}>
@@ -237,7 +237,7 @@ const Checkout = () => {
                                 {formErrors.address}
                             </Form.Control.Feedback>
                         </Form.Group>
-                        <Row>
+                        {/* <Row>
                             <Form>
                                 {['checkbox'].map((type) => (
                                     <div key={`inline-${type}`} className="mb-3">
@@ -258,7 +258,7 @@ const Checkout = () => {
                                     </div>
                                 ))}
                             </Form>
-                        </Row>
+                        </Row> */}
                         <Form.Group>
                             <Form.Label>Payment</Form.Label>
                             <div>
@@ -284,9 +284,9 @@ const Checkout = () => {
                     <Col md={4}>
                         <Card>
                             <Card.Body>
-                                <Card.Title>The total amount of</Card.Title>
+                                <Card.Title>Total Money</Card.Title>
                                 <Row>
-                                    <Col>Temporary amount</Col>
+                                    <Col>Amount</Col>
                                     <Col className="text-right">${totalAmount.toFixed(2)}</Col>
                                 </Row>
                                 <Row>
@@ -295,10 +295,10 @@ const Checkout = () => {
                                 </Row>
                                 <hr />
                                 <Row>
-                                    <Col><strong>The total amount of (including VAT)</strong></Col>
+                                    <Col><strong>Total Money</strong></Col>
                                     <Col className="text-right"><strong>${totalAmount.toFixed(2)}</strong></Col>
                                 </Row>
-                                <Button variant="primary" block onClick={ThanhToan}>PROCEED TO SHIPPING</Button>
+                                <Button variant="primary" block onClick={ThanhToan}>Place An Order</Button>
                             </Card.Body>
                         </Card>
                         <Card className="mt-3">
